@@ -1,3 +1,33 @@
+<!-- UPcode fork notice -- keep this at the top. -->
+
+> ## About this fork
+>
+> This is a fork of [ReCodEx/worker](https://github.com/ReCodEx/worker), maintained by the
+> **Department of Computer Science, Faculty of Science, Palacký University Olomouc** as part of
+> **UPcode** — the department's deployment of ReCodEx, adapted to its needs.
+>
+> Not affiliated with, nor endorsed by, the ReCodEx Team. Original copyright (© 2016 ReCodEx Team)
+> and the MIT licence are unchanged; see `License.txt`, and leave it that way.
+>
+> **Branches**
+>
+> | Branch   | What it is                                                               |
+> | -------- | ------------------------------------------------------------------------ |
+> | `master` | Untouched mirror of `ReCodEx/worker`. Nothing of ours is committed here.  |
+> | `upcode` | Our integration branch, and the default. Changes from upstream live here. |
+>
+> **What is expected to change here.** Whatever it takes to run against an Isolate that understands
+> cgroup **v2**. The vendored Isolate 1.8.1 supports only v1, and current Linux distributions
+> default to v2's unified hierarchy — on which `isolate --cg` refuses to run and no submitted code
+> is evaluated at all. Moving to a newer Isolate is not a patch but a version change with a
+> different command line, so this daemon is the other half of that work
+> (see [`upcode-isolate`](https://github.com/upol-kmi/upcode-isolate)).
+>
+> **Language toolchains are not here.** Which compilers and runtimes a worker can actually use is
+> decided by the *image* it is built into, in `services/worker/` of the deployment repository, plus
+> the matching runtime-environment packages imported into core-api. Adding C# means changing those,
+> not this repository.
+
 # Worker
 
 [![Linux Build Status](https://github.com/ReCodEx/worker/workflows/Linux%20Build/badge.svg)](https://github.com/ReCodEx/worker/actions)
